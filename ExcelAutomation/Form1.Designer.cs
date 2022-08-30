@@ -313,6 +313,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "ExcelAutomation";
             this.Text = "Excel Automation";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExcelAutomation_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
