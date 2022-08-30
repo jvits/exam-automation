@@ -285,6 +285,57 @@ Missing.Value, Missing.Value, Missing.Value, Missing.Value);
             oRng = objSheet.get_Range("A1", Missing.Value);
             oRng.EntireColumn.Insert(Type.Missing);
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void move_data(object sender, EventArgs e)
+        {
+
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range sourceRange;
+            Excel.Range destinationRange;
+
+            try
+            {
+                //Value from source cells text box
+                string _sourceCell;
+                string[] _sourceCells;
+
+                //Value from destination cells text box
+                string _destinationCell;
+                string[] _destinationCells;
+
+
+                _sourceCell = sourceCell.Text;
+                _sourceCells = _sourceCell.Split('-');
+
+                _destinationCell = destinationCell.Text;
+                _destinationCells = _destinationCell.Split('-');
+
+                objSheets = objBook.Worksheets;
+                objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+                sourceRange = objSheet.get_Range(_sourceCells[0], _sourceCells[1]);
+                
+
+                destinationRange = objSheet.get_Range(_destinationCells[0], _destinationCells[1]);
+
+
+                sourceRange.Copy(destinationRange);
+                //destinationRange.PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteFormulas, Microsoft.Office.Interop.Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, false, false);
+
+            }
+            catch (Exception theException)
+            {
+                //errorMessage = theException.ToString();
+                //MessageBox.Show(errorMessage, "Missing cell?");
+                return;
+            }
+        }
     }
 
 }

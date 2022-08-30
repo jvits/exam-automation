@@ -49,6 +49,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.selectedCellFormula = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.destinationCell = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.sourceCell = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -270,6 +276,12 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.destinationCell);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.sourceCell);
             this.tabPage4.Controls.Add(this.label9);
             this.tabPage4.Controls.Add(this.button8);
             this.tabPage4.Controls.Add(this.button7);
@@ -284,6 +296,59 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(35, 236);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(110, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Example: A1 / A1 - H1";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(23, 211);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(148, 25);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Destination Cell";
+            // 
+            // destinationCell
+            // 
+            this.destinationCell.Location = new System.Drawing.Point(28, 252);
+            this.destinationCell.Name = "destinationCell";
+            this.destinationCell.Size = new System.Drawing.Size(272, 30);
+            this.destinationCell.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(35, 144);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(110, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Example: A1 / A1 - H1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(23, 119);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(114, 25);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Source Cell";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // sourceCell
+            // 
+            this.sourceCell.Location = new System.Drawing.Point(28, 160);
+            this.sourceCell.Name = "sourceCell";
+            this.sourceCell.Size = new System.Drawing.Size(272, 30);
+            this.sourceCell.TabIndex = 18;
             // 
             // label9
             // 
@@ -336,12 +401,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(44, 317);
+            this.button4.Location = new System.Drawing.Point(90, 317);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 67);
             this.button4.TabIndex = 1;
             this.button4.Text = "Move data";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.move_data);
             // 
             // button3
             // 
@@ -404,6 +470,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox destinationCell;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox sourceCell;
     }
 }
 
