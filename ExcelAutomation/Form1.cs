@@ -12,6 +12,8 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using Microsoft.Office.Interop.Excel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 
 namespace ExcelAutomation
 {
@@ -19,6 +21,9 @@ namespace ExcelAutomation
     {
         Excel.Application objXL;
         Excel._Workbook objBook;
+
+        String errorMessage;
+        
 
         public ExcelAutomation()
         {
@@ -52,31 +57,158 @@ namespace ExcelAutomation
             }
         }
 
-        private void select_cell(object sender, EventArgs e)
+        private void update_cell(object sender, EventArgs e)
         {
             Excel.Sheets objSheets;
             Excel._Worksheet objSheet;
-            Excel.Range range;
 
             try
             {
+                //Value from selected cells text box
+                string _selectedCell;
+                int _selectedCellValue;
+
+                string[] _selectedCells;
+
+                _selectedCell = selectedCell.Text;
+                _selectedCells = _selectedCell.Split('-');
+
+                //Cell value validation
+                try
+                {
+                    _selectedCellValue = Int32.Parse(selectedCellValue.Text);
+                }
+                catch (Exception theException)
+                {
+
+                    errorMessage = "Invalid cell value.";
+                    MessageBox.Show(errorMessage, "Missing cell?");
+                    return;
+
+                }
+                
+                
+
+            
                 objSheets = objBook.Worksheets;
                 objSheet = (Excel._Worksheet)objSheets.get_Item(1);
-
-                objSheet.Cells[1, 1] = "First Name";
+                if(_selectedCell.Length <= 2)
+                {
+                    objSheet.get_Range(_selectedCells[0], _selectedCells[0]).Value2 = _selectedCellValue;
+                }
+                else
+                {
+                    objSheet.get_Range(_selectedCells[0], _selectedCells[1]).Value2 = _selectedCellValue;
+                }
             }
             catch(Exception theException)
             {
-                String errorMessage;
-                errorMessage = "Can't find the Excel workbook.";
 
-                MessageBox.Show(errorMessage, "Missing Workbook?");
+                errorMessage = "Invalid cell range.";
+                MessageBox.Show(errorMessage, "Missing cell?");
+                return;
 
-                //You can't automate Excel if you can't find the data you created, so 
-                //leave the subroutine.
+            }
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void submitFormula_Click(object sender, EventArgs e)
+        {
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range oRng;
+
+            try
+            {
+                //Value from selected cells text box formula
+                string _selectedCellResult;
+                string _selectedCellFormula;
+
+                string[] _selectedCells;
+
+                _selectedCellResult = selectedCellResult.Text;
+                _selectedCellFormula = selectedCellFormula.Text;
+                _selectedCells = _selectedCellResult.Split('-');
+
+                objSheets = objBook.Worksheets;
+                objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+                if (_selectedCells.Length <= 2)
+                {
+                    oRng = objSheet.get_Range(_selectedCells[0], _selectedCells[0]);
+                    oRng.Formula = _selectedCellFormula;
+                }
+                else
+                {
+                    oRng = objSheet.get_Range(_selectedCells[0], _selectedCells[1]);
+                    oRng.Formula = _selectedCellFormula;
+                    
+                }
+
+                displayFormula.Text = "Formula:" + oRng.Formula.ToString();
+                displayFormula.Refresh();
+
+                //Evaluate result value of formula per cell
+                //string evalFormula = objXL.Evaluate(_selectedCellFormula).ToString();
+
+            }
+            catch(Exception theException)
+            {
+                errorMessage = theException.ToString();
+                MessageBox.Show(errorMessage, "Missing cell?");
                 return;
             }
 
+        }
+
+        private void selectedCellResult_TextChanged(object sender, EventArgs e)
+        {
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range oRng;
+
+            try
+            {
+                //Value from selected cells text box formula
+                string _selectedCellResult;
+                string[] _selectedCells;
+
+                _selectedCellResult = selectedCellResult.Text;
+                _selectedCells = _selectedCellResult.Split('-');
+
+                objSheets = objBook.Worksheets;
+                objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+                if (_selectedCells.Length <= 2)
+                {
+                    oRng = objSheet.get_Range(_selectedCells[0], _selectedCells[0]);
+                }
+                else
+                {
+                    oRng = objSheet.get_Range(_selectedCells[0], _selectedCells[1]);
+
+                }
+
+               
+
+                displayFormula.Text = "Formula: " + oRng.Formula.ToString();
+                displayFormula.Refresh();
+
+            }
+            catch(Exception theException)
+            {
+                //errorMessage = theException.ToString();
+                //MessageBox.Show(errorMessage, "Missing cell?");
+                return;
+            }
         }
     }
 
