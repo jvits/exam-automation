@@ -233,6 +233,58 @@ Missing.Value, Missing.Value, Missing.Value, Missing.Value);
 
             MessageBox.Show("Your file was saved to: " + b, "Saved");
         }
+
+        private void remove_row(object sender, EventArgs e)
+        {
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range oRng;
+
+            objSheets = objBook.Worksheets;
+            objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+            oRng = objSheet.get_Range("A1", Missing.Value);
+            oRng.EntireRow.Delete(Type.Missing);
+        }
+
+        private void add_row(object sender, EventArgs e)
+        {
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range oRng;
+
+            objSheets = objBook.Worksheets;
+            objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+            oRng = objSheet.get_Range("A1", Missing.Value);
+            oRng.EntireRow.Insert(Type.Missing);
+        }
+
+        private void remove_column(object sender, EventArgs e)
+        {
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range oRng;
+
+            objSheets = objBook.Worksheets;
+            objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+            oRng = objSheet.get_Range("A1", Missing.Value);
+            oRng.EntireColumn.Delete(Type.Missing);
+        }
+
+        private void add_column(object sender, EventArgs e)
+        {
+            Excel.Sheets objSheets;
+            Excel._Worksheet objSheet;
+            Excel.Range oRng;
+
+            objSheets = objBook.Worksheets;
+            objSheet = (Excel._Worksheet)objSheets.get_Item(1);
+
+            oRng = objSheet.get_Range("A1", Missing.Value);
+            oRng.EntireColumn.Insert(Type.Missing);
+        }
     }
 
 }

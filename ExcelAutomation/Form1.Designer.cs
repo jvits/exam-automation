@@ -49,9 +49,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.selectedCellFormula = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -266,6 +270,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.button8);
+            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.button6);
             this.tabPage4.Controls.Add(this.button5);
             this.tabPage4.Controls.Add(this.button4);
             this.tabPage4.Controls.Add(this.button3);
@@ -277,15 +285,54 @@
             this.tabPage4.Text = "Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // label9
             // 
-            this.button3.Location = new System.Drawing.Point(669, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 42);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Save File";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(539, 211);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(181, 25);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Rows and Columns";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(640, 260);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(109, 52);
+            this.button8.TabIndex = 5;
+            this.button8.Text = "- Column";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.remove_column);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(506, 260);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(109, 52);
+            this.button7.TabIndex = 4;
+            this.button7.Text = "+ Column";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.add_column);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(640, 332);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(109, 52);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "- Row";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.remove_row);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(506, 332);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(109, 52);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "+ Row";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.add_row);
             // 
             // button4
             // 
@@ -296,14 +343,15 @@
             this.button4.Text = "Move data";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // button3
             // 
-            this.button5.Location = new System.Drawing.Point(535, 317);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(151, 67);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Remove Selected Cells";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(669, 6);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(118, 42);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Save File";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // ExcelAutomation
             // 
@@ -321,6 +369,7 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -348,9 +397,13 @@
         private System.Windows.Forms.TextBox selectedCellFormula;
         private System.Windows.Forms.Label displayFormula;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }
 
