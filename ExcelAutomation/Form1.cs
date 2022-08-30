@@ -210,6 +210,18 @@ namespace ExcelAutomation
                 return;
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var b = Environment.CurrentDirectory + @"\book.xlsx";
+            objBook.SaveAs(b, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Excel.XlSaveAsAccessMode.xlNoChange,
+Missing.Value, Missing.Value, Missing.Value, Missing.Value);
+            objBook.Close(false, Missing.Value, Missing.Value);
+            objXL.Quit();
+
+            MessageBox.Show("Your file was saved to: " + b, "Saved");
+
+        }
     }
 
 }
